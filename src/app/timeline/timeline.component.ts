@@ -9,7 +9,6 @@ import * as moment from "moment";
 })
 export class TimelineComponent implements OnInit {
   currentResina;
-
   timeline: {
     time: number,
     sum: number,
@@ -22,7 +21,8 @@ export class TimelineComponent implements OnInit {
   constructor() {
     if (localStorage['currentResina']) {
       this.currentResina = +localStorage.currentResina
-      this.calculate()
+      var currentTime = +localStorage.currentTime
+      this.calculate(currentTime)
     }
   }
 
@@ -30,12 +30,14 @@ export class TimelineComponent implements OnInit {
 
   }
 
-  calculate() {
+  calculate(currentTime?) {
     this.timeline = []
+    currentTime = currentTime || Date.now();
     
     localStorage.setItem('currentResina', this.currentResina)
+    localStorage.setItem('currentTime', currentTime)
 
-    var time = Date.now();
+    var time = currentTime;
     var sum = 0;
     var total = this.currentResina;
     var cuenta = "-";
