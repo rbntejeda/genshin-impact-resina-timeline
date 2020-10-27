@@ -1,24 +1,52 @@
 <div class="page-header">
     <h1>Genshin Impact <small>Resina Timeline</small></h1>
 </div>
-<div class="row">
+
+<div class="row mb-3">
     <div class="col">
         <form #formResina="ngForm" (submit)="calculate()">
-            <div class="input-group mb-3">
+            <div class="input-group">
                 <input type="number" class="form-control" id="resina" name="resina" min="0" max="120"
-                    placeholder="Ingrese resina actual ..." [(ngModel)]="currentResina" required>
+                    placeholder="Ingrese resina actual ..." [(ngModel)]="init.resina" required>
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit"
-                        [disabled]="formResina.invalid">Ingresar</button>
+                    <button class="btn btn-dark" type="submit" [disabled]="formResina.invalid">Ingresar</button>
                 </div>
             </div>
         </form>
+
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col">
+        <div class="card text-white bg-dark">
+            <div class="card-body">
+                <h5 class="card-title">Resina Actual</h5>
+                <p class="card-text">{{current.resina}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card text-white bg-dark">
+            <div class="card-body">
+                <h5 class="card-title">Proxima Recarga</h5>
+                <p class="card-text">{{current.cuenta}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card text-white bg-dark">
+            <div class="card-body">
+                <h5 class="card-title">Hora actual</h5>
+                <p class="card-text">{{current.time|date:'mediumTime'}}</p>
+            </div>
+        </div>
     </div>
 </div>
 
 <div class="row">
     <div class="col">
-        <table class="table table-bordered table-stripped">
+        <table class="table  table-dark table-bordered table-stripped">
             <thead>
                 <tr>
                     <th>#</th>
@@ -40,6 +68,7 @@
         </table>
     </div>
 </div>
+
 <div class="row">
     <div class="col">
         <p class="text-right">by <a href="https://ruben.cl" target="_blank">Rbn</a></p>
