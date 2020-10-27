@@ -32,7 +32,7 @@ export class TimelineComponent implements OnInit {
 
   calculate() {
     this.timeline = []
-    console.log("calcular")
+    
     localStorage.setItem('currentResina', this.currentResina)
 
     var time = Date.now();
@@ -64,7 +64,6 @@ export class TimelineComponent implements OnInit {
     this.int = setInterval(() => {
       this.updateCuenta()
     }, 1000)
-    console.log({ time, restoResina, diffResina })
 
   }
 
