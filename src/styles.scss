@@ -1,1 +1,10 @@
-@import "bootstrap"
+@import "bootstrap";
+
+body {
+    position: float;
+    background-image: url(/assets/genshin.jpg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
