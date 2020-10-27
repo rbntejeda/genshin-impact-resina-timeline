@@ -145,6 +145,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "resina-timeline"
+    }
+  },
+  "defaultProject": "resina-timeline",
+  "cli": {
+    "analytics": false
+  }
 }

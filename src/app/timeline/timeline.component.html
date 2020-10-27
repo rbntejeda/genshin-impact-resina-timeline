@@ -1,0 +1,47 @@
+<div class="page-header">
+    <h1>Genshin Impact <small>Resina Timeline</small></h1>
+</div>
+<div class="row">
+    <div class="col">
+        <form #formResina="ngForm" (submit)="calculate()">
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" id="resina" name="resina" min="0" max="120"
+                    placeholder="Ingrese resina actual ..." [(ngModel)]="currentResina" required>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit"
+                        [disabled]="formResina.invalid">Ingresar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <table class="table table-bordered table-stripped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Hora</th>
+                    <th>Resina</th>
+                    <th>Total</th>
+                    <th>Cuenta</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of timeline;let i=index">
+                    <th>{{i+1}}</th>
+                    <td>{{item.time|date:"shortTime"}}</td>
+                    <td>+{{item.sum}}</td>
+                    <td>{{item.total}}</td>
+                    <td>{{item.cuenta}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <p class="text-right">by <a href="https://ruben.cl" target="_blank">Rbn</a></p>
+    </div>
+</div>
