@@ -2,7 +2,7 @@
     <h1>Genshin Impact <small>Resina Timeline</small></h1>
 </div>
 
-<div class="row mb-3">
+<div class="row mb-3" *ngIf='!show'>
     <div class="col">
         <form #formResina="ngForm" (submit)="calculate()">
             <div class="input-group">
@@ -16,8 +16,18 @@
 
     </div>
 </div>
-<div *ngIf='init.resina'>
+<div *ngIf='show'>
     <div class="row">
+        <div class="col-sm-12 col-md-12 mb-3">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <h5 class="card-title">Operaciones</h5>
+                    <button class="btn btn-secondary mr-2" (click)="show=!show">Cambiar resina</button>
+                    <button class="btn btn-secondary mr-2" (click)="restResina(20)">-20</button>
+                    <button class="btn btn-secondary mr-2" (click)="restResina(40)">-40</button>
+                </div>
+            </div>
+        </div>
         <div class="col-sm-12 col-md-4 mb-3">
             <div class="card text-white bg-dark">
                 <div class="card-body">
@@ -73,5 +83,11 @@
         <div class="col">
             <p class="text-right">by <a href="https://ruben.cl" target="_blank">Rbn</a></p>
         </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <app-guide></app-guide>
     </div>
 </div>

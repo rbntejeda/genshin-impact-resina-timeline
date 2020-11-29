@@ -1,0 +1,17 @@
+<div class="card text-white bg-dark">
+    <div class="card-body">
+        <ngb-carousel *ngIf="images" [showNavigationArrows]="true" [showNavigationIndicators]="true">
+            <ng-template ngFor let-item [ngForOf]="images" let-i="index">
+                <ng-template ngbSlide>
+                    <div class="picsum-img-wrapper">
+                        <img class="img-fluid" [src]="item" alt="Random first slide">
+                    </div>
+                    <!-- <div class="carousel-caption">
+                        <h3>First slide label</h3>
+                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    </div> -->
+                </ng-template>
+            </ng-template>
+        </ngb-carousel>
+    </div>
+</div>

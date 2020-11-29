@@ -7,7 +7,10 @@ import * as moment from "moment";
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss']
 })
-export class TimelineComponent implements OnInit {
+export class TimelineComponent {
+  show = false;
+  max: 160;
+
   init = {
     resina: null,
     time: null
@@ -30,16 +33,14 @@ export class TimelineComponent implements OnInit {
 
   constructor() {
     if (localStorage['initResina']) {
+      this.show = true;
       var { resina, time } = JSON.parse(localStorage.getItem('initResina'));
       this.calculate(resina, time)
     }
   }
 
-  ngOnInit(): void {
-
-  }
-
   calculate(resina?, time?) {
+    this.show = true;
     this.timeline = []
     this.init.resina = resina || this.init.resina;
     this.init.time = time || Date.now();
@@ -61,7 +62,7 @@ export class TimelineComponent implements OnInit {
     cuenta = '-';
 
     this.timeline.push({ time, sum, total, cuenta })
-    while (total <= 100) {
+    while (total <= 140) {
       time += 20 * 1000 * 60 * 8;
       sum += 20;
       total += 20;
@@ -75,7 +76,16 @@ export class TimelineComponent implements OnInit {
     this.int = setInterval(() => {
       this.updateCuenta()
     }, 1000)
+  }
 
+  restResina(n) {
+    var r = this.current.resina - n;
+    if (r < 0) {
+      this.init.resina = 0;
+    } else {
+      this.init.resina = r;
+    }
+    this.calculate();
   }
 
   duration(future) {
@@ -93,7 +103,9 @@ export class TimelineComponent implements OnInit {
     this.current.time = Date.now();
     var duration = moment.duration(this.current.time - this.init.time);
     this.current.resina = this.init.resina + Math.floor(duration.asMinutes() / 8);
-
+    if (this.current.resina > this.max) {
+      this.current.resina = this.max
+    }
 
     var restoResina = duration.asMilliseconds() % (8 * 1000 * 60);
 
@@ -107,6 +119,7 @@ export class TimelineComponent implements OnInit {
         e.cuenta = "-";
       }
     });
+
   }
 
 }
